@@ -11,8 +11,9 @@
                 <div style="overflow: auto; height: 500px">
                     <DragContainer :groups="groups" @dragStart="onDragStart" @drop="onDrop" vertical
                                    @orderChange="onOrderChange">
-                        <Draggable v-for="(item, i) in items" :key="item.name">
+                        <Draggable :handler="false" v-for="(item, i) in items" :key="item.name">
                             <div :style="itemStyle(i)" class="d-flex">
+                                <Handler>Handler</Handler>
                                 {{ item.name }}
                                 <input
                                     @touchstart.stop
@@ -33,12 +34,13 @@
 </template>
 
 <script lang="ts">
-import {DragContainer, Draggable} from '../../index'
+import {DragContainer, Draggable, Handler} from '../../index'
 // import DropContext from '../components/DropContext.vue'
 
 export default {
     name: 'Playground',
     components: {
+        Handler,
         Draggable,
         // DropContext,
         DragContainer,

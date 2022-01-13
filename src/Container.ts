@@ -65,9 +65,11 @@ export default Vue.extend({
             }
         })
     },
+
     render(h) {
+        const defaultSlot = this.$scopedSlots.default
         return h('div', {
             ref: 'container',
-        }, this.$scopedSlots.default())
+        }, defaultSlot ? defaultSlot() : undefined)
     },
 })
